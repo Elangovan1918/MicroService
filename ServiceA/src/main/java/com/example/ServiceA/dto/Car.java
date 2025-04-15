@@ -1,14 +1,19 @@
-package com.example.ServiceC.dto;
+package com.example.ServiceA.dto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
 
 @Entity
 public class Car {
-	
+
+	@Override
+	public String toString() {
+		return "Car [carNumber=" + carNumber + ", carName=" + carName + ", carPrice=" + carPrice + ", carColor="
+				+ carColor + ", carType=" + carType + ", carModel=" + carModel + "]";
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int carNumber;
