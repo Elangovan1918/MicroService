@@ -1,26 +1,24 @@
-package com.example.ServiceC.controller;
+package com.example.ServiceC.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-
-import com.example.ServiceC.dto.Car;
-import com.example.ServiceC.service.CarServiceC;
+import com.example.ServiceC.Entity.CarEntity;
+import com.example.ServiceC.ServiceInterface.ServiceInterface;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-public class CarConsumerC {
+public class CarConsumer {
 	
 	@Autowired
-	CarServiceC carServiceC;
+	ServiceInterface serviceInterface;
 	
 	@KafkaListener(topics = "CarService-topic",groupId = "my-group")
 	public void saveCarc(String car) {
 		try {
 		ObjectMapper objectMapper=new ObjectMapper();
-		Car car2=objectMapper.readValue(car, Car.class);
-		System.out.println("CarConsumer");
-		 carServiceC.saveCar(car2);
+		CarEntity car2=objectMapper.readValue(car, CarEntity.class);
+		serviceInterface.saveCarC(car2);
 		}catch (Exception e) {
 			e.printStackTrace();
 

@@ -1,17 +1,8 @@
-package com.example.ServiceC.dto;
+package com.example.ServiceC.Dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Data;
-
-@Entity
-public class Car {
+public class CarDto {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int carNumber;
+private int carNumber;
 	
 	private String carName;
 	

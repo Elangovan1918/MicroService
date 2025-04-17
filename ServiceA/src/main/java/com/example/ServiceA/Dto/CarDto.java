@@ -1,13 +1,8 @@
-package com.example.ServiceB.dto;
+package com.example.ServiceA.Dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class Car {
-	@Id
+@data
+public class CarDto {
+	
 	private int carNumber;
 	
 	private String carName;
@@ -67,10 +62,11 @@ public class Car {
 	public void setCarModel(String carModel) {
 		this.carModel = carModel;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "{ \"carName\": \""+ carName + "\", \"carPrice\": "+ carPrice +", \"carColor\":\""+ carColor + "\", \"carType\":\"" + carType + "\", \"carModel\":\"" + carModel + "\"}";
+		return "Car [carNumber=" + carNumber + ", carName=" + carName + ", carPrice=" + carPrice + ", carColor="
+				+ carColor + ", carType=" + carType + ", carModel=" + carModel + "]";
 	}
 
 

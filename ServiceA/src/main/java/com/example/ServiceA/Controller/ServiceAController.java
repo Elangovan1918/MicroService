@@ -1,4 +1,4 @@
-package com.example.ServiceA.controller;
+package com.example.ServiceA.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,26 +9,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.ServiceA.dto.Car;
-import com.example.ServiceA.service.ServiceAService;
+import com.example.ServiceA.Dto.CarDto;
+import com.example.ServiceA.Entity.CarEntity;
+import com.example.ServiceA.ServiceImpl.ServiceAServiceImpl;
+import com.example.ServiceA.ServiceInterface.ServiceAInterface;
 
 @RestController
 public class ServiceAController {
 	
 	@Autowired
-	private RestTemplate restTemplate;
+	private ServiceAInterface serviceInterface;
 	
-	@Autowired
-	private ServiceAService serviceAService;
-	
-	@PostMapping("/saveA")
-	public ResponseEntity<Car> SaveA(@RequestBody Car car) {
+	@PostMapping("/saveCarA")
+	public CarDto saveCarA(@RequestBody CarDto carDto) {
 		
-		serviceAService.saveA(car);
-		System.out.println(car);
-		ResponseEntity<Car> car1=restTemplate.postForEntity("http://localhost:8883/saveB", car, Car.class);
-		
-		return car1;
+		serviceInterface.saveCarA(carDto);
+		return carDto;
 	}
 
 }
