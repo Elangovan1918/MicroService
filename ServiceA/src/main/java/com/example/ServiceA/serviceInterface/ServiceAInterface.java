@@ -1,12 +1,12 @@
-package com.example.ServiceA.ServiceInterface;
+package com.example.ServiceA.serviceInterface;
 
 import org.springframework.http.ResponseEntity;
 
-import com.example.ServiceA.Dto.CarDto;
-import com.example.ServiceA.Entity.CarEntity;
+import com.example.ServiceA.dto.CarDto;
+import com.example.ServiceA.entity.CarEntity;
 
 public interface ServiceAInterface {
 	
-	public ResponseEntity<CarDto> saveCarA(CarDto carDto);
+	public CarDto saveCarA(CarDto carDto);
 
 }
