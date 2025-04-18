@@ -9,26 +9,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.ServiceA.dto.Car;
-import com.example.ServiceA.service.ServiceAService;
+import com.example.ServiceA.dto.CarDto;
+import com.example.ServiceA.entity.CarEntity;
+import com.example.ServiceA.serviceImpl.ServiceAServiceImpl;
+import com.example.ServiceA.serviceInterface.ServiceAInterface;
+
+import lombok.extern.slf4j.Slf4j;
+
+
 
 @RestController
+@Slf4j
 public class ServiceAController {
 	
 	@Autowired
-	private RestTemplate restTemplate;
+	private ServiceAInterface serviceInterface;
 	
-	@Autowired
-	private ServiceAService serviceAService;
 	
-	@PostMapping("/saveA")
-	public ResponseEntity<Car> SaveA(@RequestBody Car car) {
+	@PostMapping("/saveCarA")
+	public CarDto saveCarA(@RequestBody CarDto carDto) {
 		
-		serviceAService.saveA(car);
-		System.out.println(car);
-		ResponseEntity<Car> car1=restTemplate.postForEntity("http://localhost:8883/saveB", car, Car.class);
+        log.info("[SaveCarA Method] - in ServiceAController with CarDto - {}", carDto);
 		
-		return car1;
+		serviceInterface.saveCarA(carDto);
+		
+        log.info("Car saved and received response from Service B - {}", carDto);
+
+		
+		return carDto;
 	}
 
 }
