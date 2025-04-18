@@ -22,7 +22,7 @@ public class ServiceCServiceImpl implements ServiceCServiceInterface {
 	
 	public CarDto saveCarC(CarDto carDto) {
 		
-		log.info("[Save CarC Method]Saving car - {}", carDto);
+		log.info("[Save CarC Method] - Saving car - {}", carDto);
 		
 		CarEntity carEntity=carRepository.save(convertDtoToEntity(carDto));
 		

@@ -29,7 +29,7 @@ public class ServiceAController {
 	@PostMapping("/saveCarA")
 	public CarDto saveCarA(@RequestBody CarDto carDto) {
 		
-        log.info("[SaveCarA Method] in ServiceAController with CarDto - {}", carDto);
+        log.info("[SaveCarA Method] - in ServiceAController with CarDto - {}", carDto);
 		
 		serviceInterface.saveCarA(carDto);
 		

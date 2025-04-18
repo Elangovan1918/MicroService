@@ -1,6 +1,5 @@
 package com.example.ServiceC.controller;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -17,8 +16,6 @@ public class CarConsumer {
 	@Autowired
 	ServiceCServiceInterface serviceInterface;
 	
-	@Autowired
-	ModelMapper modelMapper;
 	
 	@Autowired
 	ObjectMapper objectMapper;

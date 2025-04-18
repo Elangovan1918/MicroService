@@ -17,11 +17,5 @@ public class CarDto {
 	
 	private String carModel;
 	
-	@Override
-	public String toString() {
-		return "{ \"carName\": \""+ carName + "\", \"carPrice\": "+ carPrice +", \"carColor\":\""+ carColor + "\", \"carType\":\"" + carType + "\", \"carModel\":\"" + carModel + "\"}";
-	}
-
-
 
 }

@@ -29,7 +29,7 @@ public class ServiceAServiceImpl implements ServiceAInterface {
 	
 	public CarDto saveCarA(CarDto carDto) {
 		
-        log.info("[SaveCarA Method] with CarDto - {}", carDto);
+        log.info("[SaveCarA Method] - with CarDto - {}", carDto);
 			
 		serviceARepository.save(convertDtoToEntity(carDto));
 		
