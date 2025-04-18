@@ -1,9 +1,9 @@
-package com.example.ServiceC.ServiceInterface;
+package com.example.ServiceC.serviceInterface;
 
-import com.example.ServiceC.Entity.CarEntity;
+import com.example.ServiceC.dto.CarDto;
 
-public interface ServiceInterface {
+public interface ServiceCServiceInterface {
 	
-	public CarEntity saveCarC(CarEntity c);
+	public CarDto saveCarC(CarDto carDto);
 
 }

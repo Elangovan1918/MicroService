@@ -1,21 +1,44 @@
-package com.example.ServiceC.ServiceImpl;
+package com.example.ServiceC.serviceImpl;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.ServiceC.dto.CarDto;
+import com.example.ServiceC.entity.CarEntity;
+import com.example.ServiceC.repository.ServiceCRepository;
+import com.example.ServiceC.serviceInterface.ServiceCServiceInterface;
 
-import com.example.ServiceC.Entity.CarEntity;
-import com.example.ServiceC.Repository.CarRepository;
-import com.example.ServiceC.ServiceInterface.ServiceInterface;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
-public class ServiceImpl implements ServiceInterface {
+@Slf4j
+public class ServiceCServiceImpl implements ServiceCServiceInterface {
 	
 	@Autowired
-	CarRepository carRepository;
+	ServiceCRepository carRepository;
 	
-	public CarEntity saveCarC(CarEntity car) {
+	@Autowired
+	ModelMapper modelMapper;
+	
+	public CarDto saveCarC(CarDto carDto) {
 		
-		return carRepository.save(car);
+		log.info("[Save CarC Method]Saving car - {}", carDto);
+		
+		CarEntity carEntity=carRepository.save(convertDtoToEntity(carDto));
+		
+		log.info("Car saved - {}", carEntity);
+
+		
+		return convertEntityToDto(carEntity);
+	}
+	
+	public CarDto convertEntityToDto(CarEntity car) {
+		
+		return modelMapper.map(car, CarDto.class);
+	}
+	public CarEntity convertDtoToEntity(CarDto car) {
+		
+		return modelMapper.map(car,CarEntity.class);
 	}
 
 }
